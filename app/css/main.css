@@ -61,6 +61,12 @@ h2 {
     line-height: 2.5rem;
 }
 
+h3 {
+    font-size: 1.2rem;
+    line-height: 2rem;
+    margin-top: 1rem;
+}
+
 section.title {
     justify-content: center;
     align-items: center;
@@ -105,13 +111,19 @@ h1, h2, h3, h4 {
     width: 48%;
 }
 
-.es6 section code {
-    line-height: .9rem !important;
+.es6 code {
+    line-height: .9rem;
     background: rgb(55, 71, 79) !important;
     margin-top: 1rem;
     font-size: .6rem;
     height: 100%;
     white-space: pre !important;
+}
+
+code.inline {
+    padding-left: .2rem;
+    color: white;
+    font-size: 1rem;
 }
 
 .es6 code .comment {
