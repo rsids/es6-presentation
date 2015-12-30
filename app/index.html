@@ -12,7 +12,7 @@
 <body class="es6">
     <section class="title">
         <div>
-            <h1>ES 6 / ES 2015</h1>
+            <h1>ES6 / ES2015</h1>
             <hr/>
             <h2>Clockwork Frontend CC / Ids Klijnsma</h2>
         </div>
@@ -20,19 +20,18 @@
 
     <section>
         <article>
-        <h2>ES 6 / ES 2015</h2>
+        <h2>ES6 / ES2015</h2>
             <ul>
                 <li>Nieuwe features
                     <ul>
                         <li>let, const, scoping</li>
                         <li>fat arrow functies</li>
-                        <li>functies</li>
+                        <li>default, rest & object parameters</li>
                         <li>strings</li>
                         <li>objects</li>
                         <li>modules</li>
                         <li>classes</li>
                         <li>generators</li>
-                        <li>promises</li>
                         <li>I18N support</li>
                     </ul>
                 </li>
@@ -42,6 +41,30 @@
         </article>
     </section>
 
+    <section class="title">
+            <h2>Kan ik het al gebruiken?</h2>
+    </section>
+
+    <section class="title">
+        <div>
+            <h1>JA!</h1>
+            <hr/>
+            <h3>Maar wel een transpiler gebruiken</h3>
+        </div>
+    </section>
+
+    <section>
+        <article>
+            <h2>ES6 / ES2015</h2>
+            <ul>
+                <li>Kortere syntax</li>
+                <li>Handige nieuwe functies</li>
+                <li>Grotendeels backwards compatible</li>
+                <li>ES2016 komt er aan, jaarlijkse updates</li>
+                <li>Transpilen met Babel</li>
+            </ul>
+        </article>
+    </section>
 
     <section>
         <article>
@@ -50,7 +73,7 @@
                 <li>let is gelijk aan var, maar bestaat alleen binnen zijn scope block</li>
                 <li>const is een echte constant</li>
             </ul>
-            <div class="side-by-side">
+            <div class="code-holder side-by-side">
 <code class="language-js">let a = 'foo';
 for(let a = 0; a < 4; a++) {
     console.log(a); // 0, 1, 2, 3
@@ -83,10 +106,10 @@ b = 'baz' // ‘baz’, no problemo!
                 <li>Voor anonieme functies</li>
                 <li>Lexical this</li>
             </ul>
-            <div class="side-by-side">
+            <div class="code-holder side-by-side">
 <code class="language-js">function foo() {
     this.a = [1,2,3,4,5];
-    this.a.forEach((i) => {
+    this.a.forEach(i => {
         if(i === 5) {
             // this points to foo()
             this.five = i;
@@ -111,23 +134,239 @@ b = 'baz' // ‘baz’, no problemo!
 
     <section>
         <article>
-            <h2>Default, rest & Object parameters</h2>
-
-            <code class="language-js">
-function foo(a, b = 45, c = 'boink') {
+            <h2>Default, Rest & Object parameters</h2>
+                <div class="code-holder">
+                    <code class="language-js">function foo(a, b = 45, c = 'boink') {
     console.log(a,b,c) // undefined, 45, 'boink'
 }
 
 function bar(a, ...args) {
     console.log(a,args[0], args[1]) // 1, 45, 'boink'
 }
-
 bar(1, 45, 'boink');
+
+function baz({ name, val }) {
+    console.log(name, val); // 'Ids', 'awesome'
+}
+baz({ name: 'Ids', val: 'awesome' });
 
 let arr1 = [3,4,5];
 let arr2 = [0,1,2, ...arr1]; // [0, 1, 2, 3, 4, 5]
 let boink = 'boink';
 let boinkarr = [...boink]; // ['b', 'o', 'i', 'n', 'k']</code>
+            </div>
+        </article>
+    </section>
+
+    <section>
+        <article>
+            <h2>strings</h2>
+            <ul>
+                <li>Multiline strings</li>
+                <li>String repeat</li>
+                <li>String search</li>
+            </ul>
+            <div class="code-holder side-by-side">
+                <code class="language-js">var item = { name: 'Foo', quantity: 42 },
+    person = 'Ids',
+    message = `Hello ${person},
+    do you want to buy ${item.quantity}
+    items of ${item.foo}?`;
+
+// Repeating:
+"boink".repeat(42);
+
+// Searching
+"boink".startsWith("boi", 1) // true
+"boink".endsWith("boin", 4)  // true
+"boink".includes("oi")       // true
+"boink".includes("oi", 1)    // true
+"boink".includes("oi", 2)    // false</code>
+
+
+
+                <code class="language-js">var item = { name: 'Foo', quantity: 42 },
+    person = 'Ids',
+    message = 'Hello ' + person + ",\n" +
+    "do you want to buy " + item.quantity +
+    "items of " + item.foo + "?";
+
+// Repeating:
+Array(42).join("boink");
+
+// Searching
+"boink".indexOf("boi") === 1;    // true
+"boink".indexOf("boin") === (4 - "boin".length); // true
+"boink".indexOf("oi") !== -1;    // true
+"boink".indexOf("oi", 1) !== -1; // true
+"boink".indexOf("oi", 2) !== -1; // false</code>
+            </div>
+        </article>
+    </section>
+
+    <section>
+        <article>
+            <h2>objects</h2>
+            <div class="code-holder">
+                <code class="language-js">// Short declaration syntax
+let obj = {a, b, c};
+
+// Computed property names
+obj = {
+    foo: 'bar',
+    ['baz' + fn()] : 42
+};
+
+// Method properties
+obj = {
+    foo (a, b) {
+
+    }
+};
+
+// Fast assignment properties
+let { one, two, three } = returnsObjectWithOneTwoThreeInIt();
+console.log(one, two, three); // 1, 2, 3
+                </code>
+            </div>
+        </article>
+    </section>
+
+    <section>
+        <article>
+            <h2>modules</h2>
+            <ul>
+                <li>Maakt exporteren van values & functies mogelijk zonder global namespace te vervuilen</li>
+                <li>Werkt ongeveer gelijk aan de export method van node.js</li>
+            </ul>
+            <div class="code-holder">
+                <code class="language-js">// in lib/math.js
+export function sum(...numbers) {
+    let total = 0;
+    numbers.foreach(i => { total += i;});
+    return total;
+}
+
+// in app.js, using wildcard
+import * as math from "lib/math";
+console.log(math.sum(1,2,3)); // 6
+
+// in app.js, using specific name
+import { sum } from "lib/math";
+console.log(sum(1,2,3)); // 6
+                </code>
+            </div>
+        </article>
+    </section>
+
+    <section>
+        <article>
+            <h2>classes</h2>
+            <ul>
+                <li>Geen echte classes, onderwater nog steeds prototyped functies</li>
+            </ul>
+            <div class="code-holder">
+                <code class="language-js">class Car {
+    constructor(make, model, engine) {
+        this.make = make;
+        this.model = model;
+        this.engine = engine;
+    }
+
+    // Getters / setters
+    set color(color)   { this._color = color; }
+    get color()        { return this._color; }
+    // Static methods
+    static numberOfWheels() { return 4;}
+}
+Car.numberOfWheels(); // 4
+
+// Inheritance
+class Ferrari extends Car {
+    constructor(model, engine) {
+        super('Ferrari', model, engine);
+    }
+}
+                </code>
+            </div>
+        </article>
+    </section>
+
+    <section>
+        <article>
+            <h2>generators</h2>
+            <ul>
+                <li>Geen zijn functies die (op verschillende punten) gepauzeerd kunnen worden</li>
+                <li>Maakt het mogelijk om asynchrone code synchroon te schrijven</li>
+            </ul>
+            <div class="code-holder">
+                <code class="language-js">function* myGenerator(start, end) {
+    while(start < end) {
+        yield start;
+        start++;
+    }
+    return 'done!';
+}
+
+for( let i of myGenerator(0, 3) ) {
+    console.log(i); // 0, 1, 2
+}
+
+let gen = myGenerator(0, 3);
+console.log(gen.next()); // {value: 0, done: false}
+console.log(gen.next()); // {value: 1, done: false}
+console.log(gen.next()); // {value: 2, done: false}
+console.log(gen.next()); // {value: "done!", done: true}
+                </code>
+            </div>
+        </article>
+    </section>
+
+    <section>
+        <article>
+            <h2>internationalization</h2>
+            <ul>
+                <li>Geen externe libraries nodig</li>
+                <li>Geen support voor Frysk :'(</li>
+            </ul>
+
+            <div class="code-holder">
+                <code class="language-js">// Number formatting
+var i10nEN = new Intl.NumberFormat("en-US"), i10nDE = new Intl.NumberFormat("de-DE");
+console.log(i10nEN.format(1234567.89)); // "1,234,567.89"
+console.log(i10nDE.format(1234567.89)); // "1.234.567,89"
+
+// Currency formatting
+var i10nUSD = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+var i10nEURDE = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" });
+var i10nEURNL = new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" });
+console.log(i10nUSD.format(100200300.40)); // $100,200,300.40
+console.log(i10nEURDE.format(100200300.40)); // 100.200.300,40 €
+console.log(i10nEURNL.format(100200300.40)); // € 100.200.300,40
+
+// Date formatting
+var i10nEN = new Intl.DateTimeFormat("en-US");
+var i10nNL = new Intl.DateTimeFormat("nl-NL");
+var i10nFR = new Intl.DateTimeFormat("fr-FR", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+console.log(i10nEN.format(new Date("2015-01-02"))); // "1/2/2015"
+console.log(i10nNL.format(new Date("2015-01-02"))); // "2-1-2015"
+console.log(i10nFR.format(new Date("2015-01-02"))); // "vendredi 2 janvier 2015"
+                    </code>
+            </div>
+        </article>
+    </section>
+    <section>
+        <article>
+            <h2>Resources</h2>
+
+            <ul>
+                <li>Kangax: http://kangax.github.io/compat-table/es6/</li>
+                <li>ES6 Features: http://es6-features.org/</li>
+                <li>Mozilla MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference</li>
+                <li>Presentatie: </li>
+
+            </ul>
+
         </article>
     </section>
 
@@ -135,6 +374,7 @@ let boinkarr = [...boink]; // ['b', 'o', 'i', 'n', 'k']</code>
         ES6 / ES2015 - Ids Klijnsma - 2016
     </footer>
 
+    <script src="js/polyfill.js"></script>
     <script src="js/app.js"></script>
     <script src="js/prism.js"></script>
 </body>

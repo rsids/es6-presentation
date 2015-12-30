@@ -5,7 +5,8 @@
 
 html,
 body {
-    font-size: 32px;
+    font-size: 36px;
+    line-height: 1.2rem;
     width: 100%;
     height: 100%;
     background: rgb(55, 71, 79);
@@ -52,10 +53,12 @@ footer {
 
 h1 {
     font-size: 2rem;
+    line-height: 2.5rem;
 }
 
 h2 {
     font-size: 1.8rem;
+    line-height: 2.5rem;
 }
 
 section.title {
@@ -69,6 +72,10 @@ ul {
     margin-bottom: .2rem;
 }
 
+li {
+    margin-bottom: .2rem;
+}
+
 
 h1, h2, h3, h4 {
     font-family: Oswald;
@@ -78,16 +85,19 @@ h1, h2, h3, h4 {
 
 .title h1 {
     font-size: 6rem;
+    line-height: 7.5rem;
 }
 
 .title h2 {
     font-size: 2rem;
+    line-height: 4.5rem;
 }
 
-.side-by-side {
+.code-holder {
     width: 100%;
     display: flex;
 }
+
 
 .side-by-side code {
     height: 100%;
@@ -96,7 +106,7 @@ h1, h2, h3, h4 {
 }
 
 .es6 section code {
-    line-height: 1rem !important;
+    line-height: .9rem !important;
     background: rgb(55, 71, 79) !important;
     margin-top: 1rem;
     font-size: .6rem;
