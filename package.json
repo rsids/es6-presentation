@@ -1,0 +1,22 @@
+{
+  "name": "es6-presentation",
+  "version": "1.0.0",
+  "description": "ES6 Presentation, shows new features",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "es6",
+    "es2015",
+    "ids",
+    "klijnsma"
+  ],
+  "author": "Ids Klijnsma",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.10.1",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1"
+  }
+}

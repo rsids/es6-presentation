@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background: rgb(55, 71, 79);
+    color: lightsteelblue;
+}
+
+section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    transform: translateY(-100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section:target {
+    transform: translateY(0%);
+}
+
+
+section:target + section {
+    transform: translateY(100%);
+}
+
+
+
+h1, h2, h3, h4 {
+    font-family: Oswald;
+}
+
+.title h1 {
+    font-size: 10rem;
+}
+
+.title h2 {
+    font-size: 3rem;
+}
