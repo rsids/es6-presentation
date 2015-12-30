@@ -1,14 +1,20 @@
 (function() {
     'use strict';
-    const ARROW_RIGHT = 39,
-        ARROW_LEFT = 37;
-    let slide = 0;
+
+    const   ARROW_RIGHT = 39,
+            ARROW_LEFT = 37;
+    let     slide = 0;
+
     window.onload = ready;
 
     function ready() {
-        if(!window.location.hash) {
-            setSlide(0);
-        }
+
+        Prism.highlightAll();
+
+        addIds();
+
+        slide = window.location.hash ? parseInt(window.location.hash.split('-').pop()) : 0;
+        setSlide(0);
 
 
         document.body.addEventListener('keyup', (e) => {
@@ -23,8 +29,38 @@
         });
     }
 
+    function addIds() {
+        let sections = document.querySelectorAll('section');
+        for(let slide = 0; slide < sections.length; slide++) {
+            sections[slide].setAttribute('id', `slide-${slide}`);
+        }
+    }
+
     function setSlide(dir = 1) {
-        slide = Math.min(0, slide + dir);
-        window.location.href = `#slide-${slide}`;
+        // Don't allow negative slides
+        slide = Math.max(0, parseInt(slide) + parseInt(dir));
+
+        let activeSlide = document.getElementById(`slide-${slide}`);
+
+        if(activeSlide) {
+            removeAnimations();
+            activeSlide.classList.add('animated');
+            if(dir === 1 && activeSlide.previousElementSibling) {
+                activeSlide.previousElementSibling.classList.add('animated');
+            } else if(dir === -1 && activeSlide.nextElementSibling) {
+                activeSlide.nextElementSibling.classList.add('animated');
+            }
+
+            window.location.href = `#slide-${slide}`;
+        }
+
+    }
+
+    function removeAnimations() {
+
+        let sections = document.querySelectorAll('section');
+        for(let slide = 0; slide < sections.length; slide++) {
+            sections[slide].classList.remove('animated');
+        }
     }
 }());

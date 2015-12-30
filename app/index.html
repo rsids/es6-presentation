@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <title>ES6 / ES 2015</title>
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/prism.css">
 </head>
-<body>
-    <section class="title" id="slide-0">
+<body class="es6">
+    <section class="title">
         <div>
             <h1>ES 6 / ES 2015</h1>
             <hr/>
@@ -15,15 +18,124 @@
         </div>
     </section>
 
-    <section id="slide-1">
-        <h2>ES 6 / ES 2015</h2>
+    <section>
         <article>
+        <h2>ES 6 / ES 2015</h2>
             <ul>
-                <li>a</li>
+                <li>Nieuwe features
+                    <ul>
+                        <li>let, const, scoping</li>
+                        <li>fat arrow functies</li>
+                        <li>functies</li>
+                        <li>strings</li>
+                        <li>objects</li>
+                        <li>modules</li>
+                        <li>classes</li>
+                        <li>generators</li>
+                        <li>promises</li>
+                        <li>I18N support</li>
+                    </ul>
+                </li>
+                <li>Resources</li>
+                <li>Toekomst</li>
             </ul>
         </article>
     </section>
 
-    <script src="src/js/app.js"></script>
+
+    <section>
+        <article>
+            <h2>let, const, scoping</h2>
+            <ul>
+                <li>let is gelijk aan var, maar bestaat alleen binnen zijn scope block</li>
+                <li>const is een echte constant</li>
+            </ul>
+            <div class="side-by-side">
+<code class="language-js">let a = 'foo';
+for(let a = 0; a < 4; a++) {
+    console.log(a); // 0, 1, 2, 3
+}
+console.log(a); // ‘foo’
+
+const b = 'bar'; // ‘bar’
+b = 'baz' // TypeError: Assignment to constant variable</code>
+
+                <code class="language-js">var a = "foo";
+for(var a = 0; a < 4; a++) {
+    console.log(a); // 0, 1, 2, 3
+}
+console.log(a); // 4
+
+var b = 'bar'; // ‘bar’
+b = 'baz' // ‘baz’, no problemo!
+                </code>
+
+            </div>
+        </article>
+    </section>
+
+
+
+    <section>
+        <article>
+            <h2>fat arrow functions</h2>
+            <ul>
+                <li>Voor anonieme functies</li>
+                <li>Lexical this</li>
+            </ul>
+            <div class="side-by-side">
+<code class="language-js">function foo() {
+    this.a = [1,2,3,4,5];
+    this.a.forEach((i) => {
+        if(i === 5) {
+            // this points to foo()
+            this.five = i;
+        }
+    });
+}</code>
+
+<code class="language-js">function foo() {
+    var self = this;
+    this.a = [1,2,3,4,5];
+    this.a.forEach(function(i) {
+        if(i === 5) {
+            // this points to the foreach
+            self.five = i;
+        }
+    });
+}</code>
+
+            </div>
+        </article>
+    </section>
+
+    <section>
+        <article>
+            <h2>Default, rest & Object parameters</h2>
+
+            <code class="language-js">
+function foo(a, b = 45, c = 'boink') {
+    console.log(a,b,c) // undefined, 45, 'boink'
+}
+
+function bar(a, ...args) {
+    console.log(a,args[0], args[1]) // 1, 45, 'boink'
+}
+
+bar(1, 45, 'boink');
+
+let arr1 = [3,4,5];
+let arr2 = [0,1,2, ...arr1]; // [0, 1, 2, 3, 4, 5]
+let boink = 'boink';
+let boinkarr = [...boink]; // ['b', 'o', 'i', 'n', 'k']</code>
+        </article>
+    </section>
+
+    <footer>
+        ES6 / ES2015 - Ids Klijnsma - 2016
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/prism.js"></script>
 </body>
 </html>

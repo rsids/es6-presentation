@@ -5,10 +5,12 @@
 
 html,
 body {
+    font-size: 32px;
     width: 100%;
     height: 100%;
     background: rgb(55, 71, 79);
     color: lightsteelblue;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 section {
@@ -18,31 +20,90 @@ section {
     right: 0;
     bottom: 0;
 
-    transform: translateY(-100%);
+    transform: scale(.6) translateY(-150%);
     display: flex;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+section:target {
+    transform:  scale(1) translateY(0%);
+}
+
+section:target + section {
+    transform:  scale(.6) translateY(150%);
+}
+
+.animated {
+    transition: transform .3s ease;
+}
+
+article {
+    width: 100%;
+}
+
+footer {
+    position: fixed;
+    right: 2rem;
+    bottom: 1rem;
+    font-size: .4rem;
+    opacity: .2;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+section.title {
     justify-content: center;
     align-items: center;
 }
 
-section:target {
-    transform: translateY(0%);
+ul {
+    margin-top: .2rem;
+    margin-left: 1rem;
+    margin-bottom: .2rem;
 }
-
-
-section:target + section {
-    transform: translateY(100%);
-}
-
 
 
 h1, h2, h3, h4 {
     font-family: Oswald;
+    color: gainsboro;
+    margin-bottom: .2rem;
 }
 
 .title h1 {
-    font-size: 10rem;
+    font-size: 6rem;
 }
 
 .title h2 {
-    font-size: 3rem;
+    font-size: 2rem;
+}
+
+.side-by-side {
+    width: 100%;
+    display: flex;
+}
+
+.side-by-side code {
+    height: 100%;
+    overflow: hidden;
+    width: 48%;
+}
+
+.es6 section code {
+    line-height: 1rem !important;
+    background: rgb(55, 71, 79) !important;
+    margin-top: 1rem;
+    font-size: .6rem;
+    height: 100%;
+    white-space: pre !important;
+}
+
+.es6 code .comment {
+    color: #c5c5c5;
 }
