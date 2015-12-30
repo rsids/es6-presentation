@@ -39,6 +39,7 @@
     function setSlide(dir = 1) {
         // Don't allow negative slides
         slide = Math.max(0, parseInt(slide) + parseInt(dir));
+        slide = Math.min(slide, document.querySelectorAll('section').length - 1);
 
         let activeSlide = document.getElementById(`slide-${slide}`);
 

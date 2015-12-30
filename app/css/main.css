@@ -70,6 +70,7 @@ h3 {
 section.title {
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 ul {
