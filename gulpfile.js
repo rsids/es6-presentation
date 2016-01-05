@@ -14,6 +14,8 @@ gulp.task('serve', ['js'], function() {
     gulp.watch("app/css/*.css").on('change', browserSync.reload);
 });
 
+
+
 gulp.task('js', function() {
     return gulp.src('app/src/js/app.js')
         .pipe(babel({
