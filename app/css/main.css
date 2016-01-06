@@ -22,7 +22,7 @@ section {
     bottom: 0;
 
     transform: scale(.6) translateY(-150%);
-    display: flex;
+    display: block;
     padding: 2rem;
     overflow: hidden;
 }
@@ -71,6 +71,7 @@ section.title {
     justify-content: center;
     align-items: center;
     text-align: center;
+    display: flex;
 }
 
 ul {
